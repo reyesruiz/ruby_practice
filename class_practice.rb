@@ -12,7 +12,36 @@ class Dog
 	end
 end
 
-fido = Dog.new
+class Bird
+	def talk
+		puts "Chirp! Chrip!"
+	end
+	def move(destination)
+		puts "Flying to the #{destination}"
+	end
+end
+
+class Cat
+	def talk
+		puts "Meow!"
+	end
+	def move(destination)
+		puts "Running to #{destination}"
+	end
+end
+
+	
+bird = Bird.new
+dog = Dog.new   #Instances
+cat = Cat.new
+
+
+bird.move("tree")
+dog.talk           #calling methods on the instances.
+bird.talk
+cat.move("hose")
+
+fido = Bird.new
 rex = Dog.new
 
 fido.talk
