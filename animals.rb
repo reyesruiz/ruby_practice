@@ -4,7 +4,19 @@
 #
 
 class Dog
-	attr_accessor :name, :age
+	attr_reader :name, :age
+	def name=(value)
+		if value == ""
+			raise "Name can't be blank!"
+		end
+		@name=(value)
+	end
+	def age=(value)
+		if value < 0
+			raise "An age of #{value} is not valid!"
+		end
+		@age=(value)
+	end
 	def report_age
 		puts "#{@name} is #{@age} years old."
 	end
@@ -37,10 +49,10 @@ end
 	
 fido = Dog.new   #Instances
 fido.name = "Fido"
-fido.age = "5"
+fido.age = 5
 rex = Dog.new
 rex.name = "Rex"
-rex.age = "3"
+rex.age = 3
 fido.report_age
 fido.talk
 fido.move("backyard")
@@ -55,4 +67,7 @@ bird.talk("birdie")
 cat = Cat.new
 cat.move("hose")
 
-
+noname = Dog.new
+noname.name = ""
+noname.age = -4
+noname.report_age
