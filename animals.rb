@@ -2,8 +2,7 @@
 #Class practice:
 #Reyes Ruiz
 #
-
-class Dog
+class Animal
 	attr_reader :name, :age
 	def name=(value)
 		if value == ""
@@ -28,24 +27,30 @@ class Dog
 	end
 end
 
-class Bird
-	def talk(name)
-		puts "#{name} Chirp! Chrip!"
-	end
-	def move(destination)
-		puts "Flying to the #{destination}"
+class Dog < Animal
+	def to_s
+		"#{@name} the dog, age #{age}"
 	end
 end
 
-class Cat
+class Bird < Animal
 	def talk(name)
-		puts "#{name} Meow!"
-	end
-	def move(destination)
-		puts "Running to #{destination}"
-	end
+                puts "#{name} Chirp! Chrip!"
+        end
 end
 
+class Cat < Animal
+        def talk(name)
+                puts "#{name} Meow!"
+        end
+end
+
+class Armadillo < Animal
+	def move(destination)
+		puts "#{@name} unrolls!"
+		super(destination)
+	end
+end
 	
 fido = Dog.new   #Instances
 fido.name = "Fido"
@@ -67,7 +72,22 @@ bird.talk("birdie")
 cat = Cat.new
 cat.move("hose")
 
-noname = Dog.new
-noname.name = ""
-noname.age = -4
-noname.report_age
+#no name example which causes runtime error
+#noname = Dog.new
+#noname.name = ""
+#noname.age = -4
+#noname.report_age
+
+dillon = Armadillo.new
+dillon.name = "Dillon"
+dillon.move("burrow")
+
+spike = Dog.new
+spike.name = "Spike"
+spike.age = 5
+
+ruff = Dog.new
+ruff.name = "Ruff"
+ruff.age = 12
+
+puts spike, ruff
